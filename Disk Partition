@@ -1,0 +1,40 @@
+
+http://www.ibm.com/developerworks/library/l-lpic1-v3-104-1/
+
+1. Disk Partition using fdisk
+
+http://tldp.org/HOWTO/Partition/fdisk_partitioning.html
+
+fdisk -l (list current disk partition)
+fdisk /dev/hdb 
+
+
+Command (m for help): p
+
+Disk /dev/hdb: 64 heads, 63 sectors, 621 cylinders
+Units = cylinders of 4032 * 512 bytes
+
+
+
+Command (m for help): n
+Command action
+   e   extended
+   p   primary partition (1-4)
+p
+Partition number (1-4): 1
+First cylinder (1-621, default 1):<RETURN>
+Using default value 1
+Last cylinder or +size or +sizeM or +sizeK (1-621, default 621): +384M
+
+Finally, I issue the write command (w) to write the table on the disk.
+
+2. Use mkfs commands to set up ext2, ext3, ext4, xfs, Reiser v3,and vfat filesystems 
+
+mkfs.xfs /dev/hdb
+
+3. Mount the partition
+
+vi /etc/fstab
+add partition and mount point
+
+mount /dev/hbb1
